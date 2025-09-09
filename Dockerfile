@@ -1,0 +1,17 @@
+# Use a slim Python base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the application code
+COPY /app/app.py .
+
+# Install dependencies
+RUN pip install Flask
+
+# Expose the port the app runs on
+EXPOSE 5000
+
+# Run the application
+CMD ["python", "app.py"]

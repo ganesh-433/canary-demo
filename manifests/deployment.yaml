@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-canary
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-canary
+  template:
+    metadata:
+      labels:
+        app: flask-canary
+    spec:
+      containers:
+      - name: flask-container
+        image: ganesh243/flask-canary:1.0.0 # This is your initial version
+        ports:
+        - containerPort: 5000
