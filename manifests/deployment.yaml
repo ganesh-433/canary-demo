@@ -2,11 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flask-canary
+  annotations:
+    harness.io/skip-versioning: "true"
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: flask-canary
+  replicas: 3 # You can use a different number here for canary
   template:
     metadata:
       labels:
@@ -14,6 +13,6 @@ spec:
     spec:
       containers:
       - name: flask-container
-        image: ganesh243/flask-canary:2.0.0 # This is your initial version
+        image: your-docker-registry/flask-canary:2.0.0
         ports:
         - containerPort: 5000
