@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-canary-new
+spec:
+  replicas: 1 # Start with 1 pod for the canary
+  selector:
+    matchLabels:
+      app: flask-canary
+      version: new # ⬅️ New unique label
+  template:
+    metadata:
+      labels:
+        app: flask-canary
+        version: new
+    spec:
+      containers:
+      - name: flask-container
+        image: ganesh243/flask-canary:2.0.0 # Your v2.0.0 image
+        ports:
+        - containerPort: 5000
