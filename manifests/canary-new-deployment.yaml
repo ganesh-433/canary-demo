@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-canary-new
+  name: flask-canary-stable
 spec:
   replicas: 3 # Start with 1 pod for the canary
   selector:
@@ -12,7 +12,6 @@ spec:
     metadata:
       labels:
         app: flask-canary
-        version: new
     spec:
       containers:
       - name: flask-container
