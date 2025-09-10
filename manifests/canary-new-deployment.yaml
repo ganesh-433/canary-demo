@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: flask-canary-new
 spec:
-  replicas: 1 # Start with 1 pod for the canary
+  replicas: 3 # Start with 1 pod for the canary
   selector:
     matchLabels:
       app: flask-canary
