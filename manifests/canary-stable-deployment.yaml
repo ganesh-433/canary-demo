@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-canary-stable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-canary
+      version: stable  # ⬅️ New unique label
+  template:
+    metadata:
+      labels:
+        app: flask-canary
+        version: stable
+    spec:
+      containers:
+      - name: flask-container
+        image: ganesh243/flask-canary:1.0.0 # Your v1.0.0 image
+        ports:
+        - containerPort: 5000
